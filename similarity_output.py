@@ -22,8 +22,8 @@ def match_and_output(list):
                 max = similarity
                 max_ind = j
         if max>80:
-        print df['definition'].ix[max_ind]
-        print max
+        print (df['definition'].ix[max_ind])
+        print (max)
         out_dict[term]= df['definition'].ix[max_ind]
 
 

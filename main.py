@@ -14,7 +14,7 @@
 
 # [START app]
 import logging
-
+import similarity_output
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
@@ -30,6 +30,12 @@ def my_form_post():
     processed_text=text.upper()
     return processed_text
 
+@app.route('/result', methods=['GET', 'POST'])
+def result():
+    if request.method == 'POST':
+        result = request.form
+        return render_template("result.html", result=result)
+
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
@@ -37,6 +43,9 @@ def server_error(e):
     return 'An internal error occurred.', 500
 
 if __name__ == "__main__":
+    diff = ['Holder']
+    result=similarity_output.match_and_output(diff)
+    print(result)
     app.run()
 
 # [END app]

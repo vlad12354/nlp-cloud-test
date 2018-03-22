@@ -24,17 +24,15 @@ app = Flask(__name__)
 def hello():
     return render_template('home.html')
 
+
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text=request.form['text']
-    processed_text=text.upper()
-    return processed_text
+    text = [request.form['text'].upper()]
+    print(text)
+    result = similarity_output.match_and_output(text)
+    print(result)
+    return render_template("result.html", result=result)
 
-@app.route('/result', methods=['GET', 'POST'])
-def result():
-    if request.method == 'POST':
-        result = request.form
-        return render_template("result.html", result=result)
 
 @app.errorhandler(500)
 def server_error(e):
@@ -42,10 +40,8 @@ def server_error(e):
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
 
+
 if __name__ == "__main__":
-    diff = ['Holder']
-    result=similarity_output.match_and_output(diff)
-    print(result)
     app.run()
 
 # [END app]

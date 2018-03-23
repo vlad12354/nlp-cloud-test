@@ -18,6 +18,7 @@ import similarity_output
 from flask import Flask, request, render_template
 
 import gnl
+import gs
 
 logging.basicConfig(level=logging.INFO)
 
@@ -39,7 +40,41 @@ def my_form_post():
     return render_template("result.html", result=result)
 
 
-"gs://heroic-calculus-198812.appspot.com/record.flac"
+@app.route('/voice1', methods=['POST'])
+def my_voice1_post():
+    print("hola")
+    uri = "gs://heroic-calculus-198812.appspot.com/record1.flac"
+    best_fit = gs.SpeechAnalyzer().analyze(uri).best_fit
+    ordered_entities = gnl.EntityAnalyzer().analyze(best_fit).ordered_entities()
+    result = similarity_output.match_and_output(ordered_entities)
+
+    print(result)
+    return render_template("result.html", result=result)
+
+
+@app.route('/voice2', methods=['POST'])
+def my_voice2_post():
+    print("hola")
+    uri = "gs://heroic-calculus-198812.appspot.com/record3.flac"
+    best_fit = gs.SpeechAnalyzer().analyze(uri, language="cmn-Hans-CN").best_fit
+    ordered_entities = gnl.EntityAnalyzer().analyze(best_fit).ordered_entities()
+    result = similarity_output.match_and_output(ordered_entities)
+
+    print(result)
+    return render_template("result.html", result=result)
+
+
+@app.route('/voice3', methods=['POST'])
+def my_voice3_post():
+    print("hola")
+    uri = "gs://heroic-calculus-198812.appspot.com/record4.flac"
+    best_fit = gs.SpeechAnalyzer().analyze(uri).best_fit
+    ordered_entities = gnl.EntityAnalyzer().analyze(best_fit).ordered_entities()
+    result = similarity_output.match_and_output(ordered_entities)
+
+    print(result)
+    return render_template("result.html", result=result)
+
 
 @app.errorhandler(500)
 def server_error(e):

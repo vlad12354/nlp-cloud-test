@@ -53,12 +53,12 @@ class SpeechAnalyzer(Analyzer):
         self._uri = '/speech:recognize'
         self._result = None
 
-    def analyze(self, uri):
+    def analyze(self, uri, language="en-US"):
         data = {
             "config": {
                 "encoding": "FLAC",
                 "sampleRateHertz": 48000,
-                "languageCode": "en-US",
+                "languageCode": language,
                 "enableWordTimeOffsets": "false"
             },
             "audio": {
@@ -96,8 +96,16 @@ class SpeechAnalyzer(Analyzer):
         """
         return self._result.get('results')[0].get('alternatives')
 
+    @property
+    def best_fit(self):
+        alternatives = self.alternatives
+        alternatives.sort(key=lambda x: x.get('confidence'), reverse=True)
+        alts = [alternative.get("transcript") for alternative in alternatives]
+        return next(iter(alts), '')
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     uri = "gs://heroic-calculus-198812.appspot.com/record.flac"
-    r = SpeechAnalyzer().analyze(uri).alternatives
+    r = SpeechAnalyzer().analyze(uri).best_fit
     print(r)

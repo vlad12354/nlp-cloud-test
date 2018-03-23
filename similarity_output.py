@@ -81,7 +81,7 @@ cnt=0
 
 
 def match_and_output(list):
-
+    out_dict={}
     for term in list:
         max = 0
         cnt=0
@@ -89,12 +89,15 @@ def match_and_output(list):
             similarity = fuzz.token_sort_ratio( term, gl_term )
             if similarity >= max:
                 max = similarity
+                out_term = gl_term
                 max_ind = cnt
+
             cnt+=1
+            
         if max>70:
             #print definitions[max_ind]
             #print max
-            out_dict[gl_term]= definitions[max_ind]
+            out_dict[out_term]= definitions[max_ind]
 
     return out_dict
 

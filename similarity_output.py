@@ -96,9 +96,14 @@ def match_and_output(list):
             #print definitions[max_ind]
             #print max
             out_dict[out_term]= definitions[max_ind]
-        else:
-            out_dict[' Sorry :( ']= "No Glossary term detected"
 
+
+    if bool(out_dict):
+        n=0
+    else:
+        print "Sorry :( \nNo Glossary term detected"
 
 
     return out_dict
+
+#print match_and_output('NICK')

@@ -101,7 +101,7 @@ def match_and_output(list):
     if bool(out_dict):
         n=0
     else:
-        print "Sorry :( \nNo Glossary term detected"
+        out_dict[ " Sorry :( " ] = "No Glossary term detected"
 
 
     return out_dict

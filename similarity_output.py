@@ -99,6 +99,9 @@ def match_and_output(list):
             #print max
             out_dict[out_term]= definitions[max_ind]
 
+    if not out_dict:
+        out_dict = {"UNABLE TO FIND A MATCH": ""}
+
     return out_dict
 
 #match_and_output(['Debtor'])

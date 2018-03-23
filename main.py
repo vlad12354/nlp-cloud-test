@@ -17,6 +17,10 @@ import logging
 import similarity_output
 from flask import Flask, request, render_template
 
+import gnl
+
+logging.basicConfig(level=logging.INFO)
+
 app = Flask(__name__)
 
 
@@ -27,9 +31,10 @@ def search():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text = [request.form['text'].upper()]
-    print(text)
-    result = similarity_output.match_and_output(text)
+    text = request.form['text'].upper()
+    ordered_entities = gnl.EntityAnalyzer().analyze(text).ordered_entities()
+    result = similarity_output.match_and_output(ordered_entities)
+
     print(result)
     return render_template("result.html", result=result)
 

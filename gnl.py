@@ -1,6 +1,7 @@
 #!/usr/env python
 
 import requests
+import logging
 
 import application
 
@@ -27,10 +28,9 @@ sample_text = """Google, headquartered in Mountain View, unveiled the new Androi
 
 
 class Client(object):
-    def __init__(self, url=application.url, token=application.token):
+    def __init__(self, url=application.gnl_url, token=application.gnl_token):
         self._url = url
-        self._token = token
-        self._params = {'key': application.token}
+        self._params = {'key': token}
 
     def post(self, uri, data):
         response = requests.post(url=self._url + uri, params=self._params, json=data, allow_redirects=False)
@@ -58,7 +58,15 @@ class EntityAnalyzer(Analyzer):
                 'content': text,
             }
         }
+        logging.info("Sending Payload: %s", data)
+        logging.info("Text is: %s", text)
+        logging.info("Text type is: %s", type(text))
+
         self._result = self._client.post(self._uri, data)
+
+        logging.info("Response is: %s", self._result)
+
+        return self
 
     @property
     def result(self):
@@ -88,5 +96,5 @@ class DocumentClassify(Analyzer):
             }
         }
         self._result = self._client.post(self._uri, data)
-
+        return self
 

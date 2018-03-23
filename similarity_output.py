@@ -88,14 +88,16 @@ def match_and_output(list):
             if similarity >= max:
                 max = similarity
                 max_ind = cnt
+                out_term = gl_term
             cnt+=1
-        if max>30:
+        if max>75:
             #print definitions[max_ind]
             #print max
-            out_dict[term]= definitions[max_ind]
+            out_dict[out_term]= definitions[max_ind]
+       else:
+            out_dict['Sorry :( ']= "No Glossary term detected"
 
-    if not out_dict:
-        out_dict = {"UNABLE TO FIND A MATCH": ""}
+
 
     return out_dict
 

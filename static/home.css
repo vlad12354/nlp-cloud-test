@@ -9,3 +9,9 @@
     background-color: #343a40;
     color: white;
 }
+
+.transparent{
+  background:rgba(255,255,255,0.85);
+  margin-top: 5px;
+
+}

@@ -1,0 +1,15 @@
+.cong {
+    background-color: red !important;
+}
+
+.item-key {
+    font-weight: bold;
+}
+
+.item-container {
+    border: 1px dashed black;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

@@ -1,5 +1,5 @@
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="./static/style.css" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -39,15 +39,22 @@
 <section class="py-5">
     <div class="container">
         <h1>Searching Result</h1>
+        <!--<table class="cong" border = 1>-->
+        {% for key, value in result.items() %}
+        <!--<tr>-->
+        <!--<th> {{ key }} </th>-->
+        <!--<td> {{ value }} </td>-->
+        <!---->
+        <div class="row item-container">
+            <div class="col-sm-12">
+                <div class="item-key">{{ key }}</div>
+                <div class="item-value">{{ value }}</div>
+            </div>
+        </div>
+        <!--</tr>-->
+        {% endfor %}
+        <!--</table>-->
     </div>
-          <table border = 1>
-         {% for key, value in result.items() %}
-            <tr>
-               <th> {{ key }} </th>
-               <td> {{ value }} </td>
-            </tr>
-         {% endfor %}
-      </table>
 </section>
 
 

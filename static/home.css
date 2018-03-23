@@ -3,9 +3,17 @@
     color: black;
     border: 3px solid #343a40;
     margin-bottom: 5px;
+    border-radius: 3px;
 }
 
 .submit:hover {
     background-color: #343a40;
     color: white;
+    border-radius: 3px;
+}
+
+.transparent{
+  background:rgba(255,255,255,0.85);
+  margin-top: 5px;
+
 }

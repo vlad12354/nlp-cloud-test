@@ -75,5 +75,5 @@ def match_and_output(list):
 fuzz.token_sort_ratio()
 
 
-match_and_output([ 'Automated Clearing'])
+
 

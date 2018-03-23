@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def hello():
+def search():
     return render_template('home.html')
 
 

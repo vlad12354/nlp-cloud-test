@@ -79,7 +79,7 @@ cnt=0
 
 
 def match_and_output(list):
-
+    out_dict = {}
     for term in list:
         max = 0
         cnt=0

@@ -28,7 +28,7 @@ sample_text = """Google, headquartered in Mountain View, unveiled the new Androi
 
 
 class Client(object):
-    def __init__(self, url=application.gnl_url, token=application.gnl_token):
+    def __init__(self, url=application.gnl_url, token=application.token):
         self._url = url
         self._params = {'key': token}
 

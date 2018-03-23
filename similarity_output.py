@@ -74,6 +74,9 @@ definitions=['The contract governing your open-end credit account, it provides i
 
 
 out_dict={}
+mx=0
+cnt=0
+
 
 def match_and_output(list):
 
@@ -85,7 +88,7 @@ def match_and_output(list):
             if similarity >= max:
                 max = similarity
                 max_ind = cnt
-            cnt=+1
+            cnt+=1
         if max>70:
             #print definitions[max_ind]
             #print max
@@ -93,6 +96,7 @@ def match_and_output(list):
 
     return out_dict
 
+#match_and_output(['Debtor'])
 
 
 

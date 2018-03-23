@@ -65,14 +65,12 @@ def match_and_output(list):
                 max_ind = cnt
             cnt=+1
         if max>60:
-            print definitions[max_ind]
-            print max
+            print(definitions[max_ind])
+            print(max)
             out_dict[term]= definitions[max_ind]
 
 
     return out_dict
-
-fuzz.token_sort_ratio()
 
 
 

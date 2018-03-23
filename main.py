@@ -39,6 +39,8 @@ def my_form_post():
     return render_template("result.html", result=result)
 
 
+"gs://heroic-calculus-198812.appspot.com/record.flac"
+
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.

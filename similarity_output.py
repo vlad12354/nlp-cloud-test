@@ -90,20 +90,15 @@ def match_and_output(list):
                 max_ind = cnt
                 out_term = gl_term
             cnt+=1
+
+
         if max>75:
             #print definitions[max_ind]
             #print max
             out_dict[out_term]= definitions[max_ind]
-       else:
-            out_dict['Sorry :( ']= "No Glossary term detected"
+        else:
+            out_dict[' Sorry :( ']= "No Glossary term detected"
 
 
 
     return out_dict
-
-#match_and_output(['Debtor'])
-
-
-
-
-
